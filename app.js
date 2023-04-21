@@ -23,24 +23,38 @@ const itemsPool = require('./dbConfig')
 
 app.get("/", async(req,res)=>{
     console.log("connect DB");
-    try{
-        const allItems = await itemsPool.query(
-            'select * from test_table'
-        );
-        res.json({ allItems });
-    }catch(error){
-        console.log(error);
-        res.status(500).send(error.message)
-    }
+    // try{
+    //     const allItems = await itemsPool.query(
+    //         'select * from test_table'
+    //     );
+    //     res.json({ allItems });
+    // }catch(error){
+    //     console.log(error);
+    //     res.status(500).send(error.message)
+    // }
 })
 
 
-app.post('/getList', (req, res)=>{
-    console.log("test: getList");
-    res.send('test : getList')
-})
+// app.post('/getList', (req, res)=>{
+//     console.log("test: getList");
+//     res.send('test : getList')
+// })
 
 
 app.listen(4000, function(){console.log("run server")
 console.log(process.env.DATABASE)
+})
+
+app.post('/getList', async(req, res)=>{
+    console.log("test: getList");
+    console.log(req.body)
+    try{
+        const allItems = await itemsPool.query(
+            'select * from list'
+        );
+        res.json({ allItems });
+    }catch(error){
+        console.log(error);
+        res.status(500)
+    }
 })
