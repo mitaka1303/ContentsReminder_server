@@ -72,3 +72,17 @@ app.post('/deleteRow', async(req, res)=>{
         res.status(500)
     }
 })
+
+app.post('/addRow', async(req, res)=>{
+    console.log("test: addRow");
+    console.log(req.body.username)
+    try{
+        const deleteRow = await itemsPool.query(
+            `insert into list (username , password , title , last_update , result , checked ) values('${req.body.username}','${req.body.password}', '${req.body.title}','2023-4-1',false,false)`
+        );
+        // res.json({ allItems });
+    }catch(error){
+        console.log(error);
+        res.status(500)
+    }
+})
