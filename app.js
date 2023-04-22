@@ -49,10 +49,28 @@ app.post('/getList', async(req, res)=>{
     console.log("test: getList");
     console.log(req.body)
     try{
-        const allItems = await itemsPool.query(
+        let allItems = await itemsPool.query(
             'select * from list'
         );
-        res.json({ allItems });
+        const updateData = await Promise.all(allItems.rows.map(async(row)=>{
+            const title = row.title;
+            console.log(title)
+            let search = await itemsPool.query(
+                `select * from contents where title like '%${title}%'`
+            );
+            console.log("rowCount"+ search.rowCount)
+            const siteName = (search.rowCount >= 1  ? search.rows[0].site: 'tbd')
+            return {
+                id:row.id,
+                username: row.username,
+                password: row.password,
+                title: row.title,
+                site: siteName,
+                result: row.result,
+                checked: row.checked
+            }
+        }))
+        res.json({ updateData });
     }catch(error){
         console.log(error);
         res.status(500)
