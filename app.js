@@ -58,3 +58,17 @@ app.post('/getList', async(req, res)=>{
         res.status(500)
     }
 })
+
+app.post('/deleteRow', async(req, res)=>{
+    console.log("test: deleteRow");
+    console.log(req.body.username)
+    try{
+        const deleteRow = await itemsPool.query(
+            `delete from list where id='${req.body.id}' AND username = '${req.body.username}' AND password = '${req.body.password}'`
+        );
+        // res.json({ allItems });
+    }catch(error){
+        console.log(error);
+        res.status(500)
+    }
+})
