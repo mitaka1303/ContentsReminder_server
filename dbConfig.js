@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const itemsPool = new Pool({
-    connectionString: process.env.HOST,
+    connectionString: "test",
     ssl:{
         rejectUnauthorized:false
     }
