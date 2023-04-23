@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 const cors = require('cors')
 
 const corsOption ={
-    origin: process.env.URL,
+    origin: "test",
     optionsSuccessStatus: 200
 }
 
@@ -42,7 +42,7 @@ app.get("/", async(req,res)=>{
 
 
 app.listen(4000, function(){console.log("run server")
-console.log(process.env.DATABASE)
+console.log("test")
 })
 
 app.post('/getList', async(req, res)=>{

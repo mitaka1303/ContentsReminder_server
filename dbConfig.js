@@ -1,7 +1,7 @@
 const { Pool }= require('pg');
 
 const itemsPool = new Pool({
-    connectionString: process.env.HOST,
+    connectionString: "test",
     ssl:{
         rejectUnauthorized:false
     }
