@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-
+var key = require('./test.js');
 //環境変数のロード
 const dotenv = require('dotenv');
 dotenv.config();
@@ -43,8 +43,8 @@ app.get("/", async(req,res)=>{
 // })
 
 
-app.listen(5432, function(){console.log("run server")
-console.log(process.env.NODE_DATABASE)
+app.listen(4000, function(){console.log("run server")
+console.log(key)
 })
 
 app.post('/getList', async(req, res)=>{
