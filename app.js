@@ -14,6 +14,7 @@ const cors = require('cors')
 
 const corsOption ={
     origin: process.env.NODE_URL,
+    allowedHeaders:'Content-Type',
     optionsSuccessStatus: 200
 }
 
