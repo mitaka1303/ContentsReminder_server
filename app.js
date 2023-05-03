@@ -1,9 +1,9 @@
-const express = require('express')
-const app = express();
-var key = require('./test.js');
 //環境変数のロード
 const dotenv = require('dotenv');
 dotenv.config();
+
+const express = require('express')
+const app = express();
 
 app.use(express.json());
 const bodyParser = require('body-parser')
@@ -44,7 +44,7 @@ app.get("/", async(req,res)=>{
 
 
 app.listen(4000, function(){console.log("run server")
-console.log(key)
+console.log(process.env.NODE_DATABASE)
 })
 
 app.post('/getList', async(req, res)=>{
