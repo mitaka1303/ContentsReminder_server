@@ -17,7 +17,7 @@ const corsOption ={
     optionsSuccessStatus: 200
 }
 
-app.use(cors())
+app.use(cors(corsOption))
 
 
 
@@ -44,7 +44,7 @@ app.get("/", async(req,res)=>{
 
 
 app.listen(4000, function(){console.log("run server")
-console.log(process.env.NODE_DATABASE)
+// console.log(process.env.NODE_DATABASE)
 })
 
 app.post('/getList', async(req, res)=>{
