@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 const cors = require('cors')
 
 const corsOption ={
-    origin: "test",
+    origin: process.env.NODE_URL,
     optionsSuccessStatus: 200
 }
 
