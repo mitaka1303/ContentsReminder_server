@@ -44,11 +44,12 @@ app.get("/", async(req,res)=>{
 // })
 
 
-app.listen(4000, function(){console.log("run server")
-// console.log(process.env.NODE_DATABASE)
+app.listen(4000, function(){
+    console.log("run server")
+    console.log(process.env.NODE_URL)
 })
 
-app.post('/getList', async(req, res)=>{
+app.post('/getList', cors(corsOption), async(req, res)=>{
     console.log("test: getList");
     console.log(req.body)
     try{
